@@ -31,6 +31,10 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     racket
+     erlang
+     ruby
+     go
      lua
      yaml
      ;; ----------------------------------------------------------------
@@ -54,7 +58,9 @@ values."
      ;;
      chinese
      (haskell :variables
-              haskell-process-type 'stack-ghci)
+              haskell-process-type 'stack-ghci
+              ;;haskell-completion-backend 'intero
+              haskell-enable-hindent-style "johan-tibell")
      html
      javascript
     )
