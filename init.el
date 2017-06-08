@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     scheme
      racket
      erlang
      (ruby :variables
@@ -350,6 +351,7 @@ you should place your code here."
   ;;                      charset
   ;;                      (font-spec :family "Microsoft Yahei" :size 14))))
   (add-to-list 'exec-path "~/.local/bin")
+  (setq scheme-program-name "scheme")
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
