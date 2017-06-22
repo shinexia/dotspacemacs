@@ -31,6 +31,8 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     (c-c++ :variables
+            c-c++-enable-clang-support t)
      python
      scheme
      racket
@@ -353,6 +355,9 @@ you should place your code here."
   ;;                      (font-spec :family "Microsoft Yahei" :size 14))))
   (add-to-list 'exec-path "~/.local/bin")
   (setq scheme-program-name "scheme")
+  (add-hook 'c++-mode-hook 'clang-format-bindings)
+  (defun clange-format-bindings ()
+    (define-key c++-mode-map [tab] 'clang-format-buffer))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
