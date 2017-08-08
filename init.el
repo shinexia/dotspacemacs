@@ -49,7 +49,7 @@ values."
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      helm
-     auto-completion
+     (auto-completion emacs-lisp git java javascript yaml html ruby markdown haskell spell-checking syntax-checking)
      better-defaults
      emacs-lisp
      git
@@ -65,8 +65,8 @@ values."
      chinese
      (haskell :variables
               haskell-process-type 'stack-ghci
-              ;;haskell-completion-backend 'intero
-              haskell-enable-hindent-style "johan-tibell")
+              haskell-completion-backend 'company-ghc
+              haskell-enable-hindent-style "fundamental")
      html
      javascript
     )
@@ -327,10 +327,9 @@ executes.
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
   (setq configuration-layer--elpa-archives
-        '(("melpa-cn" . "http://elpa.emacs-china.org/melpa/")
-          ("org-cn"   . "http://elpa.emacs-china.org/org/")
-          ("gnu-cn"   . "http://elpa.emacs-china.org/gnu/")))
-
+        '(("melpa" . "/data/repo/elpa/melpa/")
+          ("org"   . "/data/repo/elpa/org/")
+          ("gnu"   . "/data/repo/elpa/gnu/")))
   )
 
 (defun dotspacemacs/user-config ()
