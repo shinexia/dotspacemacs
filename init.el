@@ -31,6 +31,21 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     better-defaults
+     ranger
+     colors
+     search-engine
+     graphviz
+     (syntax-checking :variables syntax-checking-enable-by-default nil
+                      syntax-checking-enable-tooltips nil)
+     (spell-checking :variables spell-checking-enable-by-default nil)
+     (git :variables
+          git-magit-status-fullscreen t
+          magit-push-always-verify nil
+          magit-save-repository-buffers 'dontask
+          magit-revert-buffers 'silent
+          magit-refs-show-commit-count 'all
+          magit-revision-show-gravatars nil)
      (c-c++ :variables
             c-c++-enable-clang-support t)
      python
@@ -49,8 +64,9 @@ values."
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      helm
-     (auto-completion emacs-lisp git java javascript yaml html ruby markdown haskell spell-checking syntax-checking)
-     better-defaults
+     (auto-completion
+      emacs-lisp git java javascript yaml html
+      ruby markdown haskell spell-checking syntax-checking)
      emacs-lisp
      git
      markdown
@@ -78,7 +94,8 @@ values."
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '(spaceline)
+   dotspacemacs-excluded-packages
+   '(spaceline google-translate)
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
    ;; `used-only' installs only explicitly used packages and uninstall any
@@ -330,6 +347,11 @@ before packages are loaded. If you are unsure, you should try in setting them in
         '(("melpa" . "/data/repo/elpa/melpa/")
           ("org"   . "/data/repo/elpa/org/")
           ("gnu"   . "/data/repo/elpa/gnu/")))
+
+  ;; 解决启动时卡顿的问题,see: http://spacemacs.org/doc/FAQ.html#orgheadline14
+  (setq tramp-ssh-controlmaster-options
+        "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
+
   )
 
 (defun dotspacemacs/user-config ()
