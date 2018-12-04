@@ -382,11 +382,46 @@ you should place your code here."
   ;;    (set-fontset-font (frame-parameter nil 'font)
   ;;                      charset
   ;;                      (font-spec :family "Microsoft Yahei" :size 14))))
+
   (add-to-list 'exec-path "~/.local/bin")
+
   (setq scheme-program-name "scheme")
+
+  (defun clang-format-bindings ()
+    (evil-leader/set-key "m f" 'clang-format-buffer))
+
   (add-hook 'c++-mode-hook 'clang-format-bindings)
-  (defun clange-format-bindings ()
-    (define-key c++-mode-map f 'clang-format-buffer))
+
+  (defun copy-to-clipboard ()
+    "Copies selection to x-clipboard."
+    (interactive)
+    (if (display-graphic-p)
+        (progn
+          (message "Yanked region to x-clipboard!")
+          (call-interactively 'clipboard-kill-ring-save)
+          )
+      (if (region-active-p)
+          (progn
+            (shell-command-on-region (region-beginning) (region-end) "xsel -i -b")
+            (message "Yanked region to clipboard!")
+            (deactivate-mark))
+        (message "No region active; can't yank to clipboard!")))
+    )
+
+  (defun paste-from-clipboard ()
+    "Pastes from x-clipboard."
+    (interactive)
+    (if (display-graphic-p)
+        (progn
+          (clipboard-yank)
+          (message "graphics active")
+          )
+      (insert (shell-command-to-string "xsel -o -b"))
+      )
+    )
+  (evil-leader/set-key "o y" 'copy-to-clipboard)
+  (evil-leader/set-key "o p" 'paste-from-clipboard)
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
