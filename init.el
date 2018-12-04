@@ -48,6 +48,7 @@ values."
           magit-refs-show-commit-count 'all
           magit-revision-show-gravatars nil)
      (c-c++ :variables
+            c-c++-default-mode-for-headers 'c++-mode'
             c-c++-enable-clang-support t)
      python
      scheme
@@ -385,7 +386,7 @@ you should place your code here."
   (setq scheme-program-name "scheme")
   (add-hook 'c++-mode-hook 'clang-format-bindings)
   (defun clange-format-bindings ()
-    (define-key c++-mode-map [tab] 'clang-format-buffer))
+    (define-key c++-mode-map f 'clang-format-buffer))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
