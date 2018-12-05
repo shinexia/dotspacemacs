@@ -37,9 +37,11 @@ values."
      colors
      search-engine
      graphviz
-     (syntax-checking :variables syntax-checking-enable-by-default nil
+     (syntax-checking :variables
+                      syntax-checking-enable-by-default nil
                       syntax-checking-enable-tooltips nil)
-     (spell-checking :variables spell-checking-enable-by-default nil)
+     (spell-checking :variables
+                     spell-checking-enable-by-default nil)
      (git :variables
           git-magit-status-fullscreen t
           magit-push-always-verify nil
@@ -59,6 +61,7 @@ values."
      ruby-on-rails
      (go :variables
          go-use-gometalinter t
+         gofmt-command "goimports"
          go-tab-width 2)
      lua
      yaml
@@ -89,7 +92,7 @@ values."
               haskell-completion-backend 'company-ghc
               haskell-enable-hindent-style "fundamental")
      html
-     javascript
+     (javascript)
     )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
